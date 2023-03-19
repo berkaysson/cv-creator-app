@@ -7,14 +7,14 @@ const CVForm = () => {
   
   
   return (
-    <div>
+    <form>
       <Personal />
       <Education />
       <Experience />
 
-      <button>Show Preview</button>
-      <button>Reset</button>
-    </div>
+      <button type="submit">Show Preview</button>
+      <button type="reset">Reset</button>
+    </form>
   ) 
 }
 
