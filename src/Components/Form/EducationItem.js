@@ -1,8 +1,13 @@
-import React from 'react';
+import React from "react";
 
-const EducationItem = () => {
+const EducationItem = (props) => {
+  const deleteHandler = (ev) => {
+    ev.preventDefault();
+    props.onDeleteEducationItem(ev.target.id);
+  };
+
   return (
-    <div>
+    <div id={props.id}>
       <label>University name</label>
       <input type="text" placeholder="University name"></input>
 
@@ -14,9 +19,11 @@ const EducationItem = () => {
       <label>End Date</label>
       <input type="date"></input>
 
-      <button>Delete</button>
+      <button id={props.id} onClick={deleteHandler}>
+        Delete
+      </button>
     </div>
-  )
-}
+  );
+};
 
 export default EducationItem;
