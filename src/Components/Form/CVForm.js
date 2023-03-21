@@ -6,22 +6,26 @@ import React from "react";
 const CVForm = ({ CVData, onEditCV }) => {
   const submitHandler = (ev) => {
     ev.preventDefault();
+    onEditCV(CVData);
+  };  
+
+  const changePersonalDataHandler = (personalData) => {
+    CVData.Personal = personalData;
   };
 
-  const changePersonalDataHandler = (data) => {
-    CVData.Personal = data;
+  const changeEducationDataHandler = (educationData) => {
+    CVData.Education = educationData;
   };
 
-  const changeEducationDataHandler = (data) => {
-    CVData.Education = data;
-    console.log(CVData);
+  const changeExperienceDataHandler = (experienceData) => {
+    CVData.Experience = experienceData;
   };
 
   return (
     <form>
       <Personal onChangePersonal={changePersonalDataHandler} />
       <Education onChangeEducation={changeEducationDataHandler} />
-      <Experience />
+      <Experience onChangeExperience={changeExperienceDataHandler} />
 
       <button type="submit" onClick={submitHandler}>
         Show Preview
