@@ -4,36 +4,33 @@ import EducationItem from "./EducationItem";
 const Education = ({ onChangeEducation }) => {
   const [educationItems, setEducationItems] = useState([]);
 
-  const changeEducationItemHandler = () => {
-    return;
-  };
+  // const changeEducationItemHandler = () => {
+  //   return;
+  // };
 
   const addNewEducationItem = (ev) => {
     ev.preventDefault();
-    const newId =
+    const newId = //refactor this
       educationItems.length > 0
-        ? educationItems[educationItems.length - 1].props.id + 1
+        ? educationItems.length + 1
         : 0;
     const newEducationItems = [
       ...educationItems,
-      <EducationItem
-        id={newId}
-        key={newId}
-        onChangeEducationItem={changeEducationItemHandler}
-        onDeleteEducationItem={deleteEducationItem}
-      />,
+      {id:newId},
     ];
     setEducationItems(newEducationItems);
   };
 
   const deleteEducationItem = (id) => {
-    setEducationItems(educationItems.filter((item) => item.props.id !== id));
+    setEducationItems(educationItems.filter((item) => item.id !== Number(id)));
   };
 
   return (
     <div>
       <h2>Education</h2>
-      {educationItems}
+      {educationItems.map((item) => (
+        <EducationItem id={item.id} key={item.id} onDeleteEducationItem={deleteEducationItem}/>
+      ))}
       <button onClick={addNewEducationItem}>Add New Education</button>
     </div>
   );
