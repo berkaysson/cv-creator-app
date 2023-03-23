@@ -1,43 +1,38 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
 import React from "react";
 
-const Personal = ({onChangePersonal}) => {
-  const [personalInfo, setPersonalInfo] = useState({
-    FirstName: "",
-    LastName: "",
-    Title: "",
-    Adress: "",
-    Number: "",
-    Email: "",
-    Description: "",
-  });
+const EMPTY_PERSONAL_DATA = {
+  FirstName: "",
+  LastName: "",
+  Title: "",
+  Adress: "",
+  Number: "",
+  Email: "",
+  Description: "",
+};
+
+const Personal = ({ onChangePersonal }) => {
+  const [personalInfo, setPersonalInfo] = useState(EMPTY_PERSONAL_DATA);
 
   const handleChange = (event) => {
-    // const { name, value } = event.target;
-    // setPersonalInfo((prevPersonalInfo) => { //callback
-    //   const newPersonalInfo = { ...prevPersonalInfo, [name]: value };
-    //   onChangePersonal(newPersonalInfo);
-    //   return newPersonalInfo;
-    // });
-
-    // const { name, value } = event.target;
-    // await setPersonalInfo((prevPersonalInfo) => ({
-    //   ...prevPersonalInfo,
-    //   [name]: value,
-    // }))
-    // onChangePersonal(personalInfo)
-
     const { name, value } = event.target;
     setPersonalInfo((prevPersonalInfo) => ({
       ...prevPersonalInfo,
       [name]: value,
     }));
-    // onChangePersonal(personalInfo);
   };
 
-  useEffect(() => { // to manage async useState
+  const resetForms = () => {
+    setPersonalInfo(EMPTY_PERSONAL_DATA);
+    Array.from(document.getElementsByTagName("input")).forEach((element) => {
+      element.value = "";
+    });
+  };
+
+  useEffect(() => {
+    // to manage async useState
     onChangePersonal(personalInfo);
-  }, [onChangePersonal, personalInfo])
+  }, [onChangePersonal, personalInfo]);
 
   return (
     <div>
