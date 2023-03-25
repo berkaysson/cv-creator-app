@@ -3,33 +3,19 @@ import Experience from "./Experience";
 import Education from "./Education";
 import React from "react";
 
-const CVForm = ({ CVData, onEditCV }) => {
-  const submitHandler = (ev) => {
-    ev.preventDefault();
-    onEditCV(CVData);
-  };  
-
-  const changePersonalDataHandler = (personalData) => {
-    CVData.Personal = personalData;
-  };
-
-  const changeEducationDataHandler = (educationData) => {
-    CVData.Education = educationData;
-  };
-
-  const changeExperienceDataHandler = (experienceData) => {
-    CVData.Experience = experienceData;
-  };
+const CVForm = ({ onChangePersonal, CV, onSubmit, onReset, onChangeEducation, onAddEducationItem }) => {
 
   return (
-    <form>
-      <Personal onChangePersonal={changePersonalDataHandler} />
-      <Education onChangeEducation={changeEducationDataHandler} />
-      <Experience onChangeExperience={changeExperienceDataHandler} />
+    <form id="form" onSubmit={(e) => onSubmit(e)} onReset={onReset}>
+      <Personal onChange={onChangePersonal} personalData={CV.Personal} />
+      <Education
+        educationData={CV.Education}
+        onChange={onChangeEducation}
+        onAddItem={onAddEducationItem}
+      />
+      <Experience experienceData={CV.Experience} />
 
-      <button type="submit" onClick={submitHandler}>
-        Show Preview
-      </button>
+      <button type="submit">Show Preview</button>
       <button type="reset">Reset</button>
     </form>
   );

@@ -1,39 +1,6 @@
-import { useEffect, useState} from "react";
 import React from "react";
 
-const EMPTY_PERSONAL_DATA = {
-  FirstName: "",
-  LastName: "",
-  Title: "",
-  Adress: "",
-  Number: "",
-  Email: "",
-  Description: "",
-};
-
-const Personal = ({ onChangePersonal }) => {
-  const [personalInfo, setPersonalInfo] = useState(EMPTY_PERSONAL_DATA);
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setPersonalInfo((prevPersonalInfo) => ({
-      ...prevPersonalInfo,
-      [name]: value,
-    }));
-  };
-
-  const resetForms = () => {
-    setPersonalInfo(EMPTY_PERSONAL_DATA);
-    Array.from(document.getElementsByTagName("input")).forEach((element) => {
-      element.value = "";
-    });
-  };
-
-  useEffect(() => {
-    // to manage async useState
-    onChangePersonal(personalInfo);
-  }, [onChangePersonal, personalInfo]);
-
+const Personal = ({ onChange, personalData }) => {
   return (
     <div>
       <h2>Personal Information</h2>
@@ -41,8 +8,8 @@ const Personal = ({ onChangePersonal }) => {
       <input
         type="text"
         name="FirstName"
-        value={personalInfo.FirstName}
-        onChange={handleChange}
+        value={personalData.FirstName}
+        onChange={(e)=>onChange(e)}
         placeholder="First Name"
       />
 
@@ -50,8 +17,8 @@ const Personal = ({ onChangePersonal }) => {
       <input
         type="text"
         name="LastName"
-        value={personalInfo.LastName}
-        onChange={handleChange}
+        value={personalData.LastName}
+        onChange={(e)=>onChange(e)}
         placeholder="Last Name"
       />
 
@@ -59,8 +26,8 @@ const Personal = ({ onChangePersonal }) => {
       <input
         type="text"
         name="Title"
-        value={personalInfo.Title}
-        onChange={handleChange}
+        value={personalData.Title}
+        onChange={(e)=>onChange(e)}
         placeholder="Title"
       />
 
@@ -68,8 +35,8 @@ const Personal = ({ onChangePersonal }) => {
       <input
         type="text"
         name="Adress"
-        value={personalInfo.Adress}
-        onChange={handleChange}
+        value={personalData.Adress}
+        onChange={(e)=>onChange(e)}
         placeholder="Address"
       />
 
@@ -77,8 +44,8 @@ const Personal = ({ onChangePersonal }) => {
       <input
         type="tel"
         name="Number"
-        value={personalInfo.Number}
-        onChange={handleChange}
+        value={personalData.Number}
+        onChange={(e)=>onChange(e)}
         placeholder="Phone Number"
       />
 
@@ -86,8 +53,8 @@ const Personal = ({ onChangePersonal }) => {
       <input
         type="email"
         name="Email"
-        value={personalInfo.Email}
-        onChange={handleChange}
+        value={personalData.Email}
+        onChange={(e)=>onChange(e)}
         placeholder="Email"
       />
 
@@ -95,8 +62,8 @@ const Personal = ({ onChangePersonal }) => {
       <input
         type="text"
         name="Description"
-        value={personalInfo.Description}
-        onChange={handleChange}
+        value={personalData.Description}
+        onChange={(e)=>onChange(e)}
         placeholder="Description"
       />
     </div>
