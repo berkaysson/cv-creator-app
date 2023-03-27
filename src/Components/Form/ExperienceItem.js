@@ -1,69 +1,50 @@
-import React, {useState, useEffect} from 'react';
+import React from "react";
 
-const ExperienceItem = (props) => {
-  const [experienceInfo, setExperienceInfo] = useState({
-    position: "",
-    company: "",
-    startDate: "",
-    endDate: "",
-  });
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setExperienceInfo((prevExperienceInfo) => ({
-      ...prevExperienceInfo,
-      [name]: value,
-    }));
-  };
-
-  const deleteHandler = (ev) => {
-    ev.preventDefault();
-    props.onDeleteExperienceItem(ev.target.id);
-  };
-
-  useEffect(() => {
-    props.onChangeExperienceItem(experienceInfo, props.id);
-  }, [props.onChangeExperienceItem, experienceInfo, props]);
-  
-
+const ExperienceItem = ({ id, onChange, data, onDelete }) => {
   return (
-    <div>
+    <div id={id}>
       <label>Position</label>
       <input
         type="text"
-        name="position"
-        value={experienceInfo.position}
-        onChange={handleChange}
+        name="Position"
+        value={data.Position}
+        onChange={(e) => onChange(e, id)}
         placeholder="Position"
       />
 
       <label>Company</label>
       <input
         type="text"
-        name="company"
-        value={experienceInfo.company}
-        onChange={handleChange}
+        name="Company"
+        value={data.Company}
+        onChange={(e) => onChange(e, id)}
         placeholder="Company"
       />
 
       <label>Start Date</label>
       <input
         type="date"
-        name="startDate"
-        value={experienceInfo.startDate}
-        onChange={handleChange}
+        name="StartDate"
+        value={data.StartDate}
+        onChange={(e) => onChange(e, id)}
       />
       <label>End Date</label>
       <input
         type="date"
-        name="endDate"
-        value={experienceInfo.endDate}
-        onChange={handleChange}
+        name="EndDate"
+        value={data.EndDate}
+        onChange={(e) => onChange(e, id)}
       />
 
-      <button onClick={deleteHandler}>Delete</button>
+      <button
+        onClick={(e) => {
+          onDelete(e, id);
+        }}
+      >
+        Delete
+      </button>
     </div>
   );
-}
+};
 
 export default ExperienceItem;

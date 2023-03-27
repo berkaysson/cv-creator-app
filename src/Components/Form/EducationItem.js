@@ -1,39 +1,14 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 
-const EducationItem = (props) => {
-  const [educationInfo, seteducationInfo] = useState({
-    UniName: "",
-    Degree: "",
-    StartDate: "",
-    EndDate: "",
-  });
-
-  const deleteHandler = (ev) => {
-    ev.preventDefault();
-    props.onDeleteEducationItem(ev.target.id);
-  };
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    seteducationInfo((prevEdInfo) => ({
-      ...prevEdInfo,
-      [name]: value,
-    }));
-  };
-
-  useEffect(() => { // to manage async useState
-    props.onChangeEducationItem(educationInfo, props.id);
-  }, [props.onChangeEducationItem, educationInfo, props])
-
-
+const EducationItem = ({id, onChange, data, onDelete}) => {
   return (
-    <div id={props.id}>
+    <div id={id}>
       <label>University name</label>
       <input
         type="text"
         name="UniName"
-        value={educationInfo.UniName}
-        onChange={handleChange}
+        value={data.UniName}
+        onChange={(e)=>onChange(e, id)}
         placeholder="University name"
       />
 
@@ -41,8 +16,8 @@ const EducationItem = (props) => {
       <input
         type="text"
         name="Degree"
-        value={educationInfo.Degree}
-        onChange={handleChange}
+        value={data.Degree}
+        onChange={(e)=>onChange(e, id)}
         placeholder="Degree"
       />
 
@@ -50,19 +25,19 @@ const EducationItem = (props) => {
       <input
         type="date"
         name="StartDate"
-        value={educationInfo.StartDate}
-        onChange={handleChange}
+        value={data.StartDate}
+        onChange={(e)=>onChange(e, id)}
       />
 
       <label>End Date</label>
       <input
         type="date"
         name="EndDate"
-        value={educationInfo.EndDate}
-        onChange={handleChange}
+        value={data.EndDate}
+        onChange={(e)=>onChange(e, id)}
       />
 
-      <button id={props.id} onClick={deleteHandler}>
+      <button onClick={(e) => {onDelete(e, id)}}>
         Delete
       </button>
     </div>
