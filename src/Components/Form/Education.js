@@ -1,5 +1,6 @@
 import React from "react";
 import EducationItem from "./EducationItem";
+import Button from "../../UIElements/Button";
 
 const Education = ({educationData, onChange, onAddItem, onDeleteItem}) => {
   const educationItems = Object.values(educationData).map((item) => (
@@ -15,7 +16,7 @@ const Education = ({educationData, onChange, onAddItem, onDeleteItem}) => {
     <div>
       <h2>Education</h2>
       {educationItems}
-      <button onClick={onAddItem}>Add New Education</button>
+      <Button text={'Add New Education'} onClick={onAddItem}/>
     </div>
   );
 };

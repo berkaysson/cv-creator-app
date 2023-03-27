@@ -1,5 +1,6 @@
 import React from "react";
 import ExperienceItem from "./ExperienceItem";
+import Button from "../../UIElements/Button";
 
 const Experience = ({ experienceData, onChange, onAddItem, onDeleteItem }) => {
   const experienceItems = Object.values(experienceData).map((item) => (
@@ -16,7 +17,7 @@ const Experience = ({ experienceData, onChange, onAddItem, onDeleteItem }) => {
     <div>
       <h2>Experience</h2>
       {experienceItems}
-      <button onClick={onAddItem}>Add New Experience</button>
+      <Button text={'Add New Experience'} onClick={onAddItem}/>
     </div>
   );
 };

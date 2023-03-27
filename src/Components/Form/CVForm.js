@@ -2,6 +2,7 @@ import Personal from "./Personal";
 import Experience from "./Experience";
 import Education from "./Education";
 import React from "react";
+import Button from "../../UIElements/Button";
 
 const CVForm = ({
   onChangePersonal,
@@ -31,8 +32,8 @@ const CVForm = ({
         onDeleteItem={onDeleteExperienceItem}
       />
 
-      <button type="submit">Show Preview</button>
-      <button type="reset">Reset</button>
+      <Button type={'submit'} text={'Show Preview'} />
+      <Button type={'reset'} text={'Reset'} />
     </form>
   );
 };
