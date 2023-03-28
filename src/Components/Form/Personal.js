@@ -1,72 +1,74 @@
 import React from "react";
+import InputForm from "../../UIElements/InputForm";
+import FormWrapper from "../../UIElements/FormWrapper";
 
 const Personal = ({ onChange, personalData }) => {
   return (
-    <div>
+    <FormWrapper>
       <h2>Personal Information</h2>
-      <label>First Name</label>
-      <input
-        type="text"
-        name="FirstName"
-        value={personalData.FirstName}
-        onChange={(e)=>onChange(e)}
+      <InputForm
+        labelText="First Name"
+        inputType="text"
         placeholder="First Name"
+        inputName="FirstName"
+        onChange={onChange}
+        value={personalData.FirstName}
       />
 
-      <label>Last Name</label>
-      <input
-        type="text"
-        name="LastName"
-        value={personalData.LastName}
-        onChange={(e)=>onChange(e)}
+      <InputForm
+        labelText="Last Name"
+        inputType="text"
         placeholder="Last Name"
+        inputName="LastName"
+        onChange={onChange}
+        value={personalData.LastName}
       />
 
-      <label>Title</label>
-      <input
-        type="text"
-        name="Title"
-        value={personalData.Title}
-        onChange={(e)=>onChange(e)}
+      <InputForm
+        labelText="Title"
+        inputType="text"
         placeholder="Title"
+        inputName="Title"
+        onChange={onChange}
+        value={personalData.Title}
       />
 
-      <label>Address</label>
-      <input
-        type="text"
-        name="Adress"
-        value={personalData.Adress}
-        onChange={(e)=>onChange(e)}
+      <InputForm
+        labelText="Address"
+        inputType="text"
         placeholder="Address"
+        inputName="Adress"
+        onChange={onChange}
+        value={personalData.Adress}
       />
 
-      <label>Phone Number</label>
-      <input
-        type="tel"
-        name="Number"
-        value={personalData.Number}
-        onChange={(e)=>onChange(e)}
+      <InputForm
+        labelText="Phone Number"
+        inputType="tel"
         placeholder="Phone Number"
+        inputName="Number"
+        onChange={onChange}
+        value={personalData.Number}
       />
 
-      <label>Email</label>
-      <input
-        type="email"
-        name="Email"
-        value={personalData.Email}
-        onChange={(e)=>onChange(e)}
+      <InputForm
+        labelText="Email"
+        inputType="email"
         placeholder="Email"
+        inputName="Email"
+        onChange={onChange}
+        value={personalData.Email}
       />
-
-      <label>Description</label>
-      <input
-        type="text"
-        name="Description"
-        value={personalData.Description}
-        onChange={(e)=>onChange(e)}
+      
+      <InputForm
+        labelText="Description"
+        inputType="text"
         placeholder="Description"
+        inputName="Description"
+        onChange={onChange}
+        value={personalData.Description}
       />
-    </div>
+    </FormWrapper>
   );
 };
 

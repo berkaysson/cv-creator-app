@@ -3,6 +3,15 @@ import Experience from "./Experience";
 import Education from "./Education";
 import React from "react";
 import Button from "../../UIElements/Button";
+import styled from "styled-components";
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  padding: var(--padding);
+  width: 100%;
+`
 
 const CVForm = ({
   onChangePersonal,
@@ -17,7 +26,7 @@ const CVForm = ({
   onDeleteExperienceItem,
 }) => {
   return (
-    <form id="form" onSubmit={(e) => onSubmit(e)} onReset={onReset}>
+    <Form id="form" onSubmit={(e) => onSubmit(e)} onReset={onReset}>
       <Personal onChange={onChangePersonal} personalData={CV.Personal} />
       <Education
         educationData={CV.Education}
@@ -32,9 +41,9 @@ const CVForm = ({
         onDeleteItem={onDeleteExperienceItem}
       />
 
-      <Button type={'submit'} text={'Show Preview'} />
-      <Button type={'reset'} text={'Reset'} />
-    </form>
+      <Button type={'submit'} text={'Show Preview'} buttonType='primary'/>
+      <Button type={'reset'} text={'Reset'} buttonType='secondary'/>
+    </Form>
   );
 };
 

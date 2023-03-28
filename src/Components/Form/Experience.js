@@ -1,6 +1,7 @@
 import React from "react";
 import ExperienceItem from "./ExperienceItem";
 import Button from "../../UIElements/Button";
+import FormWrapper from "../../UIElements/FormWrapper";
 
 const Experience = ({ experienceData, onChange, onAddItem, onDeleteItem }) => {
   const experienceItems = Object.values(experienceData).map((item) => (
@@ -14,11 +15,11 @@ const Experience = ({ experienceData, onChange, onAddItem, onDeleteItem }) => {
   ));
 
   return (
-    <div>
+    <FormWrapper>
       <h2>Experience</h2>
       {experienceItems}
-      <Button text={'Add New Experience'} onClick={onAddItem}/>
-    </div>
+      <Button text={'Add New Experience'} onClick={onAddItem} buttonType='add'/>
+    </FormWrapper>
   );
 };
 

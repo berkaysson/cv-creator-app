@@ -1,6 +1,7 @@
 import React from "react";
 import EducationItem from "./EducationItem";
 import Button from "../../UIElements/Button";
+import FormWrapper from "../../UIElements/FormWrapper";
 
 const Education = ({educationData, onChange, onAddItem, onDeleteItem}) => {
   const educationItems = Object.values(educationData).map((item) => (
@@ -13,11 +14,11 @@ const Education = ({educationData, onChange, onAddItem, onDeleteItem}) => {
   ));
 
   return (
-    <div>
+    <FormWrapper>
       <h2>Education</h2>
       {educationItems}
-      <Button text={'Add New Education'} onClick={onAddItem}/>
-    </div>
+      <Button text={'Add New Education'} onClick={onAddItem} buttonType='add'/>
+    </FormWrapper>
   );
 };
 

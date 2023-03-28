@@ -1,49 +1,52 @@
 import React from "react";
+import InputForm from "../../UIElements/InputForm";
+import Button from "../../UIElements/Button";
+import FormItemWrapper from "../../UIElements/FormItemWrapper";
 
 const ExperienceItem = ({ id, onChange, data, onDelete }) => {
   return (
-    <div id={id}>
-      <label>Position</label>
-      <input
-        type="text"
-        name="Position"
-        value={data.Position}
-        onChange={(e) => onChange(e, id)}
+    <FormItemWrapper>
+      <InputForm
+        labelText="Position"
+        inputType="text"
+        inputName="Position"
         placeholder="Position"
-      />
-
-      <label>Company</label>
-      <input
-        type="text"
-        name="Company"
-        value={data.Company}
         onChange={(e) => onChange(e, id)}
+        value={data.Position}
+      />
+      <InputForm
+        labelText="Company"
+        inputType="text"
+        inputName="Company"
         placeholder="Company"
+        onChange={(e) => onChange(e, id)}
+        value={data.Company}
       />
 
-      <label>Start Date</label>
-      <input
-        type="date"
-        name="StartDate"
+      <InputForm
+        labelText="Start Date"
+        inputType="date"
+        inputName="StartDate"
+        onChange={(e) => onChange(e, id)}
         value={data.StartDate}
-        onChange={(e) => onChange(e, id)}
-      />
-      <label>End Date</label>
-      <input
-        type="date"
-        name="EndDate"
-        value={data.EndDate}
-        onChange={(e) => onChange(e, id)}
       />
 
-      <button
+      <InputForm
+        labelText="End Date"
+        inputType="date"
+        inputName="EndDate"
+        onChange={(e) => onChange(e, id)}
+        value={data.EndDate}
+      />
+
+      <Button
         onClick={(e) => {
           onDelete(e, id);
         }}
-      >
-        Delete
-      </button>
-    </div>
+        text='Delete'
+        buttonType='danger'
+      />
+    </FormItemWrapper>
   );
 };
 
