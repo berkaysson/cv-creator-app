@@ -7,11 +7,17 @@
   --danger-color: #ee5e6f;
 
   --gap: 0.7rem;
+  --gap-sl: 0.4rem;
   --padding: 1rem;
-  --padding-sl: 0.5rem;
-  --padding-lg: 3rem;
-  --btn-padding: 0.5rem;
+  --padding-sl: 0.6rem;
+  --padding-lg: 2.5rem;
+  --btn-padding: 0.6rem;
   --margin: 1.2rem;
+
+  --font-lg: 1.3rem;
+  --font-xlg: 2.5rem;
+  --font-sl: 0.8rem;
+  --font-md: 1rem;
 
   --button-border-radius: 8px;
 }
@@ -31,10 +37,16 @@ html {
   width: 100%;
   color: var(--grey-color);
   background-color: var(--light-color);
+  font-size: 15px;
 }
 
 body {
   margin: 0;
   height: 100%;
   width: 100%;
+}
+
+#root {
+  margin: 0 auto;
+  max-width: 850px;
 }

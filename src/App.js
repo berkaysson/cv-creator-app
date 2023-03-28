@@ -138,7 +138,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div id="App">
       <h1>CV Creator</h1>
       <CVForm
         onChangePersonal={handlePersonChange}
