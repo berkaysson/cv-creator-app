@@ -3,6 +3,7 @@ import CVPreview from "./Components/Preview/CVPreview";
 import "./Style/App.css";
 import React, { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
+import Card from "./UIElements/Card";
 
 const EMPTY_CVData = {
   Personal: {
@@ -40,7 +41,7 @@ function App() {
 
   const resetFormHandler = () => {
     setCVData(EMPTY_CVData);
-  }
+  };
 
   const handlePersonChange = (e) => {
     const { name, value } = e.target;
@@ -56,13 +57,15 @@ function App() {
   const handleEducationChange = (e, id) => {
     const { name, value } = e.target;
     setCVData((prevData) => {
-      const newEducation = Object.values(prevData.Education).map((educationItem) => {
-        if(educationItem.id === id){
-          return {...educationItem, [name] : value};
+      const newEducation = Object.values(prevData.Education).map(
+        (educationItem) => {
+          if (educationItem.id === id) {
+            return { ...educationItem, [name]: value };
+          }
+          return educationItem;
         }
-        return educationItem;
-      })
-      return {...prevData, Education:{...newEducation}}
+      );
+      return { ...prevData, Education: { ...newEducation } };
     });
   };
 
@@ -84,9 +87,9 @@ function App() {
 
   const deleteEducationItem = (e, id) => {
     e.preventDefault();
-    setCVData(prevData => {
+    setCVData((prevData) => {
       const newEducation = Object.values(prevData.Education).filter(
-        educationItem => educationItem.id !== id
+        (educationItem) => educationItem.id !== id
       );
       return { ...prevData, Education: { ...newEducation } };
     });
@@ -95,13 +98,15 @@ function App() {
   const handleExperienceChange = (e, id) => {
     const { name, value } = e.target;
     setCVData((prevData) => {
-      const newExperience = Object.values(prevData.Experience).map((experienceItem) => {
-        if(experienceItem.id === id){
-          return {...experienceItem, [name] : value};
+      const newExperience = Object.values(prevData.Experience).map(
+        (experienceItem) => {
+          if (experienceItem.id === id) {
+            return { ...experienceItem, [name]: value };
+          }
+          return experienceItem;
         }
-        return experienceItem;
-      })
-      return {...prevData, Experience:{...newExperience}}
+      );
+      return { ...prevData, Experience: { ...newExperience } };
     });
   };
 
@@ -111,7 +116,7 @@ function App() {
       Experience: {
         ...prevData.Experience,
         [Object.keys(prevData.Experience).length]: {
-          id : uuidv4(),
+          id: uuidv4(),
           Position: "",
           Company: "",
           StartDate: "",
@@ -123,9 +128,9 @@ function App() {
 
   const deleteExperienceItem = (e, id) => {
     e.preventDefault();
-    setCVData(prevData => {
+    setCVData((prevData) => {
       const newExperience = Object.values(prevData.Experience).filter(
-        experienceItem => experienceItem.id !== id
+        (experienceItem) => experienceItem.id !== id
       );
       return { ...prevData, Experience: { ...newExperience } };
     });
@@ -135,24 +140,28 @@ function App() {
     e.preventDefault();
     setCVDataPreview(CVData);
     console.log(CVData);
-  }
+  };
 
   return (
     <div id="App">
       <h1>CV Creator</h1>
-      <CVForm
-        onChangePersonal={handlePersonChange}
-        CV={CVData}
-        onSubmit={submitHandler}
-        onReset={resetFormHandler}
-        onChangeEducation={handleEducationChange}
-        onAddEducationItem={addEducationItem}
-        onDeleteEducationItem={deleteEducationItem}
-        onChangeExperience={handleExperienceChange}
-        onAddExperienceItem={addExperienceItem}
-        onDeleteExperienceItem={deleteExperienceItem}
-      />
-      <CVPreview CVData={CVDataPreview} />
+      <Card>
+        <CVForm
+          onChangePersonal={handlePersonChange}
+          CV={CVData}
+          onSubmit={submitHandler}
+          onReset={resetFormHandler}
+          onChangeEducation={handleEducationChange}
+          onAddEducationItem={addEducationItem}
+          onDeleteEducationItem={deleteEducationItem}
+          onChangeExperience={handleExperienceChange}
+          onAddExperienceItem={addExperienceItem}
+          onDeleteExperienceItem={deleteExperienceItem}
+        />
+      </Card>
+      <Card>
+        <CVPreview CVData={CVDataPreview} />
+      </Card>
     </div>
   );
 }
