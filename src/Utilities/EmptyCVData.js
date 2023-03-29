@@ -5,7 +5,7 @@ const EMPTY_CVData = {
     FirstName: "",
     LastName: "",
     Title: "",
-    Adress: "",
+    Address: "",
     Number: "",
     Email: "",
     Description: "",

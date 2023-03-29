@@ -37,9 +37,9 @@ const Personal = ({ onChange, personalData }) => {
         labelText="Address"
         inputType="text"
         placeholder="Address"
-        inputName="Adress"
+        inputName="Address"
         onChange={onChange}
-        value={personalData.Adress}
+        value={personalData.Address}
       />
 
       <InputForm
