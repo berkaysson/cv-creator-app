@@ -4,43 +4,15 @@ import "./Style/App.css";
 import React, { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import Card from "./UIElements/Card";
-
-const EMPTY_CVData = {
-  Personal: {
-    FirstName: "",
-    LastName: "",
-    Title: "",
-    Adress: "",
-    Number: "",
-    Email: "",
-    Description: "",
-  },
-  Education: {
-    0: {
-      id : uuidv4(),
-      UniName: "",
-      Degree: "",
-      StartDate: "",
-      EndDate: "",
-    },
-  },
-  Experience: {
-    0: {
-      id : uuidv4(),
-      Position: "",
-      Company: "",
-      StartDate: "",
-      EndDate: "",
-    },
-  },
-};
+import emptyCV from "./Utilities/EmptyCVData";
+import exampleCV from "./Utilities/ExampleCVData";
 
 function App() {
-  const [CVData, setCVData] = useState(EMPTY_CVData);
-  const [CVDataPreview, setCVDataPreview] = useState(EMPTY_CVData);
+  const [CVData, setCVData] = useState(emptyCV);
+  const [CVDataPreview, setCVDataPreview] = useState(emptyCV);
 
   const resetFormHandler = () => {
-    setCVData(EMPTY_CVData);
+    setCVData(emptyCV);
   };
 
   const handlePersonChange = (e) => {
@@ -136,6 +108,10 @@ function App() {
     });
   };
 
+  const loadExample = () => {
+    setCVDataPreview(exampleCV);
+  }
+
   const submitHandler = (e) => {
     e.preventDefault();
     setCVDataPreview(CVData);
@@ -157,6 +133,7 @@ function App() {
           onChangeExperience={handleExperienceChange}
           onAddExperienceItem={addExperienceItem}
           onDeleteExperienceItem={deleteExperienceItem}
+          onLoadExample={loadExample}
         />
       </Card>
       <Card>
