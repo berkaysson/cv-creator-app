@@ -23,6 +23,10 @@ const StyledButton = styled.button`
   &:hover {
     opacity: 0.9;
   }
+
+  &:active{
+    border-color: var(--grey-color);
+  }
 `;
 
 const Button = ({ onClick, text, type, buttonType }) => {
