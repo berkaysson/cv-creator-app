@@ -24,7 +24,8 @@ const CVForm = ({
   onChangeExperience,
   onAddExperienceItem,
   onDeleteExperienceItem,
-  onLoadExample
+  onLoadExample,
+  onGeneratePdf
 }) => {
   return (
     <Form id="form" onSubmit={(e) => onSubmit(e)} onReset={onReset}>
@@ -44,6 +45,7 @@ const CVForm = ({
 
       <Button type={'submit'} text={'Show Preview'} buttonType='primary'/>
       <Button type={'button'} text={'Load Example'} buttonType='secondary' onClick={onLoadExample}/>
+      <Button type={'button'} text={'Generate PDF'} buttonType='secondary' onClick={onGeneratePdf}/>
       <Button type={'reset'} text={'Reset'} buttonType='secondary'/>
     </Form>
   );

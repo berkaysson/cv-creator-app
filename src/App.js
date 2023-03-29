@@ -110,7 +110,18 @@ function App() {
 
   const loadExample = () => {
     setCVDataPreview(exampleCV);
-  }
+  };
+
+  const generatePDF = async () => {
+    const div = document.getElementById('CVPreview');
+    const printContents = div.innerHTML;
+    const originalContents = document.body.innerHTML;
+  
+    document.body.innerHTML = printContents;
+    window.print();
+  
+    document.body.innerHTML = originalContents;
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -134,6 +145,7 @@ function App() {
           onAddExperienceItem={addExperienceItem}
           onDeleteExperienceItem={deleteExperienceItem}
           onLoadExample={loadExample}
+          onGeneratePdf={generatePDF}
         />
       </Card>
       <Card>
