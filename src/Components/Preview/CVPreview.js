@@ -3,28 +3,59 @@ import styled from "styled-components";
 const CVWrapper = styled.div`
   background-color: white;
   aspect-ratio: 0.709;
-  min-width: 850px;
   margin: 0;
   padding: 0;
+  font-size: 15px;
+  width: 845px;
+  display: grid;
+  grid-template-columns: 74% 26%;
+  grid-template-rows: 15% 85%;
   @media print {
     width: 210mm;
     height: 297mm;
     overflow: visible;
     page-break-after: always;
   }
+
+  @media (max-width: 850px) {
+    font-size: 13px;
+    width: 733px;
+  }
+
+  @media (max-width: 750px) {
+    font-size: 11px;
+    width: 620px;
+  }
+
+  @media (max-width: 650px) {
+    font-size: 9px;
+    width: 507px;
+  }
+
+  @media (max-width: 520px) {
+    font-size: 8px;
+    width: 451px;
+  }
+
+  @media (max-width: 450px) {
+    font-size:6px;
+    width: 338px;
+  }
 `;
 
 const HeaderWrapper = styled.div`
   background-color: #143e72;
-  height: 14%;
   color: white;
-  padding: 1.4rem 3rem;
+  padding: 1.4em 3em;
+  grid-column: 1/3;
+  grid-row: 1/2;
 `;
 
 const MainWrapper = styled.div`
+  grid-column: 1/3;
+  grid-row: 2/3;
   display: grid;
   grid-template-columns: 74% 26%;
-  height: 100%;
 `;
 
 const ContentWrapper = styled.div`
@@ -32,15 +63,16 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   justify-content: start;
   align-items: flex-start;
-  gap: 5rem;
-  padding: 2.4rem 4rem;
+  gap: 5em;
+  padding: 2.4em 4em;
   font-size: 1.4em;
+  grid-column: 1/2;
 `;
 
 const ContentItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1em;
 
   & h4 {
     text-decoration: underline;
@@ -49,41 +81,41 @@ const ContentItemWrapper = styled.div`
 
 const ListItemWrapper = styled.li`
   list-style: none;
-  padding: 1rem 0.5rem;
-  padding-left: 0.7rem;
+  padding: 1em 0.5em;
+  padding-left: 0.7em;
   display: flex;
   flex-direction: column;
-  gap:0.4rem;
+  gap:0.4em;
 `;
 
 const PersonalWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  height: 100%;
+  gap: 1.5em;
   background-color: lightblue;
   font-size: 1.1em;
-  padding: 2rem 0.5rem;
+  padding: 2em 0.5em;
+  grid-column: 2/3;
 
   & h2 {
-    font-size: 1.7rem;
+    font-size: 1.7em;
     text-decoration: underline;
     text-align: center;
   }
 
   & h3 {
-    font-size: 1.4rem;
+    font-size: 1.4em;
   }
 `;
 
 const PersonalItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.5em;
   height: auto;
 
   &:last-child{
-    margin-top: 4rem;
+    margin-top: 4em;
   }
 `
 
