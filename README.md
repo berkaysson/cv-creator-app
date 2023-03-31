@@ -15,3 +15,5 @@ To use the CV Creator App, follow these steps:
 2. Install dependencies: `npm install`
 3. Start the app: `npm start`
 4. Open the app in your browser: `http://localhost:3000`
+
+or [LIVE DEMO](https://berkaysson.github.io/cv-creator-app/)
